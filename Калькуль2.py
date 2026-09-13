@@ -26,7 +26,7 @@ block2 = ctk.CTkFrame(block, width=350, height=4, fg_color='#E2E8F0')
 block2.grid_propagate(False)
 block2.place(x=15, y=242)
 
-label1 = ctk.CTkLabel(block, text='Среда', text_color='#475569', font=("Trebuchet MS" 'bold', 14))
+label1 = ctk.CTkLabel(block, text='Среда', text_color='#475569', font=("Trebuchet MS", 14))
 label1.grid(row=0, column=0, pady=5, padx=15, sticky='w')
 
 label2 = ctk.CTkLabel(block, text='Температура воздуха', text_color='#475569', font=("Comic Sans MC", 14))
