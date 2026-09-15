@@ -50,7 +50,7 @@ label1.grid(row=0, column=0, pady=(8,0), padx=15, sticky='w')
 label2 = ctk.CTkLabel(block, text='Температура', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label2.grid(row=3, column=0, pady=(10,0), padx=45, sticky='w')
 
-label3 = ctk.CTkLabel(block, text='Время распространения сигнала', text_color='#475569', font=("Century Gothic", 15, 'bold'))
+label3 = ctk.CTkLabel(block, text='Время прохождения сигнала', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label3.grid(row=5, column=0, pady=(10,0), padx=45, sticky='w')
 
 label4 = ctk.CTkLabel(block1, text='Параметры воды', text_color='#475569', font=("Century Gothic", 15, 'bold'))
