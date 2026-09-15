@@ -124,7 +124,7 @@ ms = ctk.CTkLabel(block4,
               font=("Century Gothic", 20),
               text_color='#475569',
               )
-ms.place(x=135, y=70)
+ms.place(x=138, y=70)
 
 skorost = ctk.CTkLabel(block4,
                        text='Скорость звука',
