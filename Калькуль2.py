@@ -72,7 +72,7 @@ label7.grid(row=0, padx=15, pady=(11,0))
 label8 = ctk.CTkLabel(block6, text='Формулы', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
 label8.grid(row=0, column=0, padx=15, pady=(11,0), sticky='w')
 
-label9 = ctk.CTkLabel(block6, text='v = 331,3 + 0,606 * t;\nS = t * v / 2', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
+label9 = ctk.CTkLabel(block6, text='v = 331,3 + 0,606 * T;\nS = t * v / 2', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
 
 label10 = ctk.CTkLabel(block6, text='Где: \nv — скорость звука в среде (м/с) \nt — время, которое сигнал затратил на путь до\nобъекта и обратно(с)\nS — расстояние до объекта (м)', text_color='#475569', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
 
