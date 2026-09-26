@@ -44,26 +44,44 @@ block5 = ctk.CTkFrame(block3, width=190, height=110, fg_color='#F0F4F8')
 block5.grid_propagate(False)
 block5.place(x=220, y=50)
 
+block6 = ctk.CTkFrame(root, width=425, height=257, fg_color='#F0F4F8', border_width=1, border_color='#CBD5E1')
+block6.grid_propagate(False)
+block6.place(x=410, y=208)
+
 label1 = ctk.CTkLabel(block, text='Среда', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label1.grid(row=0, column=0, pady=(8,0), padx=15, sticky='w')
 
-label2 = ctk.CTkLabel(block, text='Температура', text_color='#475569', font=("Century Gothic", 15, 'bold'))
+label2 = ctk.CTkLabel(block, text='Температура, °C', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label2.grid(row=3, column=0, pady=(10,0), padx=45, sticky='w')
 
-label3 = ctk.CTkLabel(block, text='Время прохождения сигнала', text_color='#475569', font=("Century Gothic", 15, 'bold'))
+label3 = ctk.CTkLabel(block, text='Время прохождения сигнала, с', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label3.grid(row=5, column=0, pady=(10,0), padx=45, sticky='w')
 
 label4 = ctk.CTkLabel(block1, text='Параметры воды', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label4.grid(row=0, column=0, pady=(10,0), padx=17, sticky='w')
 
-label5 = ctk.CTkLabel(block1, text='Солёность', text_color='#475569', font=("Century Gothic", 15, 'bold'))
+label5 = ctk.CTkLabel(block1, text='Солёность, ‰', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label5.grid(row=1, column=0, pady=(6,0), padx=17, sticky='w')
 
-label6 = ctk.CTkLabel(block1, text='Глубина', text_color='#475569', font=("Century Gothic", 15, 'bold'))
+label6 = ctk.CTkLabel(block1, text='Глубина, м', text_color='#475569', font=("Century Gothic", 15, 'bold'))
 label6.grid(row=1, pady=(6,0), padx=183, sticky='w')
 
 label7 = ctk.CTkLabel(block3, text='Результат', text_color='#475569', font=("Century Gothic", 18, 'bold'))
 label7.grid(row=0, padx=15, pady=(11,0))
+
+label8 = ctk.CTkLabel(block6, text='Формулы', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
+label8.grid(row=0, column=0, padx=15, pady=(11,0), sticky='w')
+
+label9 = ctk.CTkLabel(block6, text='v = 331,3 + 0,606 * t;\nS = t * v / 2', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
+
+label10 = ctk.CTkLabel(block6, text='Где: \nv — скорость звука в среде (м/с) \nt — время, которое сигнал затратил на путь до\nобъекта и обратно(с)\nS — расстояние до объекта (м)', text_color='#475569', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
+
+label11 = ctk.CTkLabel(block6, text='v = 1448.96 + 4.591T - 0.05304T² + 0.0002374T³ +\n+ 1.34(s - 35) + 0.0163*d;\nS = t * v / 2', text_color='#475569', font=("Century Gothic", 17, 'bold'), anchor='w', justify='left')
+
+label12 = ctk.CTkLabel(block6, text='Где: \nv — скорость звука в среде (м/с) \nT — температура (°C) \ns — соленость (‰) \nd — глубина погружения (м)\nS — расстояние до объекта (м)\nt — время, которое сигнал затратил на путь (с)', text_color='#475569', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
+
+#label13 = ctk.CTkLabel(block6, text='S = t / v', text_color='gray', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
+#label13.grid(row=3, column=0, padx=15, pady=(11, 0), sticky='w')
 
 #ctk.set_appearance_mode("Light")
 #root.configure(fg_color="#F0F4F8")
@@ -84,6 +102,10 @@ def environment_changed(choise): #Чойс - то же говно, что и э�
         label4.configure(text_color='#475569')
         label5.configure(text_color='#475569')
         label6.configure(text_color='#475569')
+        label9.grid_forget()
+        label10.grid_forget()
+        label11.grid(row=1, column=0, padx=15, pady=(9, 0), sticky='w')
+        label12.grid(row=2, column=0, padx=15, pady=(9, 0), sticky='w')
     elif choise == 'Воздух': #С воздухом прячет
         solenost.delete(0, 50)
         davlenie.delete(0, 50)
@@ -92,6 +114,10 @@ def environment_changed(choise): #Чойс - то же говно, что и э�
         label4.configure(text_color='gray')
         label5.configure(text_color='gray')
         label6.configure(text_color='gray')
+        label11.grid_forget()
+        label12.grid_forget()
+        label9.grid(row=1, column=0, padx=15, pady=(9,0), sticky='w')
+        label10.grid(row=2, column=0, padx=15, pady=(9, 0), sticky='w')
 
 environments = ['Воздух', 'Вода'] #Энвироментс - параша, название переменной, именую как хочу. Список - это квадратные скобки
 environment = ctk.CTkComboBox(block, #Комбобокс - лист-выпадашка
@@ -113,18 +139,18 @@ e2.grid(row=4, column=0, sticky='e', padx=15)
 
 #На лейбл выводится результат
 label = ctk.CTkLabel(block4,
-              text="",
+              text="0.0",
               font=("Century Gothic", 40, 'bold'),
               text_color='black',
               )
-label.place(x=15, y=50)
+label.place(x=15, y=95, anchor='sw')
 
 ms = ctk.CTkLabel(block4,
               text="м/с",
               font=("Century Gothic", 20),
               text_color='#475569',
               )
-ms.place(x=138, y=70)
+ms.place(x=80, y=95, anchor='sw')
 
 skorost = ctk.CTkLabel(block4,
                        text='Скорость звука',
@@ -134,18 +160,18 @@ skorost = ctk.CTkLabel(block4,
 skorost.place(x=30, y=10)
 
 label0 = ctk.CTkLabel(block5,
-              text="",
+              text="0.0",
               font=("Century Gothic", 40,'bold'),
               text_color='black',
               )
-label0.place(x=15, y=50)
+label0.place(x=15, y=95, anchor='sw')
 
 m = ctk.CTkLabel(block5,
               text="м",
               font=("Century Gothic", 20),
               text_color='#475569',
               )
-m.place(x=150, y=70)
+m.place(x=80, y=95, anchor='sw')
 
 rasstoyanie = ctk.CTkLabel(block5,
                        text='Расстояние',
@@ -196,6 +222,9 @@ def distanse():
         label.configure(text=f"{v:.1f}") #\nРезультат: {result:.1f} м.", :.2f округляет до 2 знаков после запятой, n - энтер
         label0.configure(text=f"{result:.1f}")
         er.configure(text='')
+        root.update_idletasks()
+        m.place_configure(x=20 + label0.winfo_reqwidth(), y=94, anchor='sw')
+        ms.place_configure(x=20 + label.winfo_reqwidth(), y=94, anchor='sw')
     except ValueError: #Вместо ошибки прога ругает тебя
         er.configure(text='Числа пиши осёл.') #Конфигур меняет. В данном случае меняет текст с пустого на инструкцию и имя получателя
         label.configure(text="")
