@@ -72,13 +72,13 @@ label7.grid(row=0, padx=15, pady=(11,0))
 label8 = ctk.CTkLabel(block6, text='Формулы', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
 label8.grid(row=0, column=0, padx=15, pady=(11,0), sticky='w')
 
-label9 = ctk.CTkLabel(block6, text='v = 331,3 + 0,606 * T;\nS = t * v / 2', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
+label9 = ctk.CTkLabel(block6, text='S = t * v / 2; \nv = 331,3 + 0,606 * T', text_color='#475569', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
 
-label10 = ctk.CTkLabel(block6, text='Где: \nv — скорость звука в среде (м/с) \nt — время, которое сигнал затратил на путь до\nобъекта и обратно(с)\nS — расстояние до объекта (м)', text_color='#475569', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
+label10 = ctk.CTkLabel(block6, text='Где: \nS — расстояние до объекта (м) \nt — время, которое сигнал затратил на путь до \nобъекта и обратно(с) \nv — скорость звука в среде (м/с) \nT — температура (°C)', text_color='#64748b', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
 
-label11 = ctk.CTkLabel(block6, text='v = 1448.96 + 4.591T - 0.05304T² + 0.0002374T³ +\n+ 1.34(s - 35) + 0.0163*d;\nS = t * v / 2', text_color='#475569', font=("Century Gothic", 17, 'bold'), anchor='w', justify='left')
+label11 = ctk.CTkLabel(block6, text='S = t * v / 2; \nv = 1448.96 + 4.591T - 0.05304T² + 0.0002374T³ +\n+ 1.34(s - 35) + 0.0163*d', text_color='#475569', font=("Century Gothic", 17, 'bold'), anchor='w', justify='left')
 
-label12 = ctk.CTkLabel(block6, text='Где: \nv — скорость звука в среде (м/с) \nT — температура (°C) \ns — соленость (‰) \nd — глубина погружения (м)\nS — расстояние до объекта (м)\nt — время, которое сигнал затратил на путь (с)', text_color='#475569', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
+label12 = ctk.CTkLabel(block6, text='Где: \nS — расстояние до объекта (м) \nt — время, которое сигнал затратил на путь (с) \nv — скорость звука в среде (м/с) \nT — температура (°C) \ns — соленость (‰) \nd — глубина погружения (м)', text_color='#64748b', font=("Century Gothic", 15, 'bold'), justify='left', anchor='w')
 
 #label13 = ctk.CTkLabel(block6, text='S = t / v', text_color='gray', font=("Century Gothic", 18, 'bold'), anchor='w', justify='left')
 #label13.grid(row=3, column=0, padx=15, pady=(11, 0), sticky='w')
@@ -122,7 +122,7 @@ def environment_changed(choise): #Чойс - то же говно, что и э�
 environments = ['Воздух', 'Вода'] #Энвироментс - параша, название переменной, именую как хочу. Список - это квадратные скобки
 environment = ctk.CTkComboBox(block, #Комбобокс - лист-выпадашка
                               values=environments, #Валуес - слова в выпадашке
-                              command=environment_changed, height=36, width=350, border_width=1, border_color='#CBD5E1', button_color='#CBD5E1', button_hover_color="#0082FF", text_color='#475569', font=('Century Gothic', 13, 'bold')) #wight=430, height=38) #corner_radius = 8  # Мягкое скругление углов
+                              command=environment_changed, height=36, width=350, border_width=1, border_color='#CBD5E1', button_color='#CBD5E1', button_hover_color="#0082FF", text_color='#475569', font=('Century Gothic', 13, 'bold'))
 environment.set('Воздух') #Сет выбирает слово в кавычках как дефолтное
 environment_changed(environment.get())
 environment.grid(row=1, column=0, padx=15)
@@ -148,7 +148,7 @@ label.place(x=15, y=95, anchor='sw')
 ms = ctk.CTkLabel(block4,
               text="м/с",
               font=("Century Gothic", 20),
-              text_color='#475569',
+              text_color='#64748b',
               )
 ms.place(x=80, y=95, anchor='sw')
 
@@ -157,7 +157,7 @@ skorost = ctk.CTkLabel(block4,
                        font=("Century Gothic", 13, 'bold'),
                        text_color='#475569'
                        )
-skorost.place(x=30, y=10)
+skorost.place(x=15, y=10)
 
 label0 = ctk.CTkLabel(block5,
               text="0.0",
@@ -169,7 +169,7 @@ label0.place(x=15, y=95, anchor='sw')
 m = ctk.CTkLabel(block5,
               text="м",
               font=("Century Gothic", 20),
-              text_color='#475569',
+              text_color='#64748b',
               )
 m.place(x=80, y=95, anchor='sw')
 
@@ -178,7 +178,7 @@ rasstoyanie = ctk.CTkLabel(block5,
                        font=("Century Gothic", 13, 'bold'),
                        text_color='#475569'
                        )
-rasstoyanie.place(x=30, y=10)
+rasstoyanie.place(x=15, y=10)
 
 er=ctk.CTkLabel(block3, text='', font=("Century Gothic", 18), text_color='red')
 er.place(x=130, y=11)
@@ -235,7 +235,7 @@ btn2 = ctk.CTkButton(block,
              command = distanse,
              font = ("Century Gothic", 15, 'bold'),
              #width=10, height=2, - Размеры кнопки
-             hover_color = 'blue', #activebackground = hover_color
+             hover_color = '#0066CC', #activebackground = hover_color
              fg_color = '#0082FF', #bg, background = fg_color 3a92ff
              text_color = 'white', #fg = text_color
              width=350, height=35
